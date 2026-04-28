@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>US Welfare Cliff Calculator 2026 — Does a Raise Actually Help?</title>
+<meta name="description" content="Calculate if earning more money actually helps you in the US 2026 — SNAP, Medicaid, EITC benefit cliffs visualized. The result will shock you."/>
+<meta name="keywords" content="welfare cliff calculator usa, snap benefit cliff 2026, medicaid income limit calculator, eitc phase out calculator, does earning more hurt benefits"/>
+<meta name="robots" content="index,follow"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563eb;--dark:#1e293b;--light:#f8fafc;--green:#16a34a;
+      --red:#dc2626;--orange:#ea580c;--shadow:0 4px 20px rgba(0,0,0,.1)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+     background:var(--light);color:var(--dark);min-height:100vh}
+header{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;
+       padding:36px 20px;text-align:center}
+header h1{font-size:clamp(1.2rem,3.5vw,2.1rem);line-height:1.3;margin-bottom:10px}
+header p{opacity:.8;font-size:.95rem;max-width:640px;margin:0 auto}
+.container{max-width:740px;margin:28px auto;padding:0 16px}
+.card{background:#fff;border-radius:14px;box-shadow:var(--shadow);
+      padding:28px;margin-bottom:22px}
+.card h2{font-size:1.05rem;color:var(--blue);margin-bottom:18px;
+         border-bottom:2px solid #eff6ff;padding-bottom:8px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:.85rem;font-weight:600;
+             color:#475569;margin-bottom:5px}
+.field input,.field select{width:100%;padding:11px 14px;
+  border:1.5px solid #cbd5e0;border-radius:9px;font-size:1rem;
+  transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus{outline:none;
+  border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;background:linear-gradient(135deg,var(--blue),#1d4ed8);
+     color:#fff;border:none;padding:15px;border-radius:10px;
+     font-size:1rem;font-weight:700;cursor:pointer;
+     transition:transform .1s,box-shadow .2s;margin-top:6px}
+.btn:hover{transform:translateY(-2px);
+           box-shadow:0 6px 20px rgba(37,99,235,.35)}
+.btn:active{transform:translateY(0)}
+.btn-sm{display:inline-block;padding:9px 18px;border-radius:8px;
+        font-size:.875rem;font-weight:600;cursor:pointer;
+        border:none;transition:transform .1s}
+.btn-share{background:#ff4500;color:#fff}
+.btn-twitter{background:#000;color:#fff}
+.btn-pdf{background:#16a34a;color:#fff}
+.btn-email{background:#7c3aed;color:#fff}
+.result-row{display:flex;justify-content:space-between;align-items:center;
+            padding:13px 0;border-bottom:1px solid #f1f5f9}
+.result-row:last-child{border-bottom:none}
+.res-label{color:#64748b;font-size:.9rem}
+.res-value{font-weight:800;font-size:1.15rem;color:var(--blue)}
+.shock{display:none;border-radius:12px;padding:20px;margin-top:18px;
+       text-align:center;font-size:1.1rem;font-weight:700;
+       animation:pop .4s ease}
+@keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+.shock-red{background:#fef2f2;border:2px solid var(--red);color:var(--red)}
+.shock-green{background:#f0fdf4;border:2px solid var(--green);color:var(--green)}
+.shock-orange{background:#fff7ed;border:2px solid var(--orange);color:var(--orange)}
+.affiliate-box{display:none;background:#fffbeb;border:1px solid #f59e0b;
+               border-radius:12px;padding:20px;margin-top:16px}
+.affiliate-box h3{font-size:.95rem;color:#92400e;margin-bottom:12px}
+.aff-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.aff-link{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;
+          background:#fff;border:1px solid #fcd34d;border-radius:8px;
+          text-decoration:none;color:#92400e;font-size:.85rem;font-weight:600;
+          transition:background .2s}
+.aff-link:hover{background:#fef3c7}
+.capture-box{background:#f0f4ff;border:1px solid #c7d2fe;border-radius:12px;
+             padding:20px;margin-top:16px}
+.capture-box h3{font-size:.9rem;color:#3730a3;margin-bottom:10px}
+.capture-form{display:flex;gap:8px;flex-wrap:wrap}
+.capture-form input{flex:1;min-width:180px;padding:10px 14px;
+  border:1px solid #c7d2fe;border-radius:8px;font-size:.9rem}
+.share-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tunnel-bar{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;
+            padding:14px;margin-top:16px}
+.tunnel-bar p{font-size:.85rem;color:#166534;margin-bottom:8px;font-weight:600}
+.tunnel-links{display:flex;flex-wrap:wrap;gap:8px}
+.tunnel-link{display:inline-block;padding:7px 12px;background:#fff;
+             border:1px solid #86efac;border-radius:7px;text-decoration:none;
+             color:#166534;font-size:.8rem;font-weight:600;
+             transition:background .2s}
+.tunnel-link:hover{background:#dcfce7}
+.ad-slot{background:#fff;border-radius:10px;padding:14px;text-align:center;
+          border:1px dashed #cbd5e0;margin-bottom:20px;min-height:80px}
+.meta-footer{font-size:.78rem;color:#94a3b8;text-align:center;
+              padding:24px 0 32px;line-height:1.7}
+@media print{.no-print{display:none!important}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🇺🇸 US Welfare Cliff Calculator 2026</h1>
+  <p>Does earning $5,000 more actually help you — or destroy your benefits?</p>
+</header>
+<div class="container">
+<div class="ad-slot no-print"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});<\/script></div>
+<div class="card">
+  <h2>👨‍👩‍👧 Your Household</h2>
+  <div class="grid2">
+    <div class="field"><label>Annual gross income ($)</label><input type="number" id="income" value="28000" oninput="calcUS()"/></div>
+    <div class="field"><label>Children in household</label><input type="number" id="children" value="2" min="0" oninput="calcUS()"/></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label>Receiving SNAP?</label>
+      <select id="snap" onchange="calcUS()">
+        <option value="yes">Yes</option><option value="no">No</option>
+      </select>
+    </div>
+    <div class="field"><label>On Medicaid?</label>
+      <select id="medicaid" onchange="calcUS()">
+        <option value="yes">Yes</option><option value="no">No</option>
+      </select>
+    </div>
+  </div>
+  <div class="field"><label>State (expansion state?)</label>
+    <select id="state" onchange="calcUS()">
+      <option value="exp">Expansion state (CA, NY, TX...)</option>
+      <option value="non">Non-expansion state</option>
+    </select>
+  </div>
+  <button class="btn" onclick="calcUS()">⚡ Detect the Cliff</button>
+</div>
+<div class="card">
+  <h2>📊 Your Real Financial Picture</h2>
+  <div class="result-row"><span class="res-label">🍎 SNAP benefit / year</span><span class="res-value" id="res_snap">—</span></div>
+  <div class="result-row"><span class="res-label">🏥 Medicaid est. value</span><span class="res-value" id="res_medicaid">—</span></div>
+  <div class="result-row"><span class="res-label">💰 EITC credit</span><span class="res-value" id="res_eitc">—</span></div>
+  <div class="result-row"><span class="res-label">📊 Real net (income+benefits−taxes)</span><span class="res-value" id="res_net">—</span></div>
+  <div class="result-row"><span class="res-label">🚨 Cliff impact</span><span class="res-value" id="res_cliff">—</span></div>
+  <div id="shock_us" class="shock"></div>
+  <div class="affiliate-box" id="aff_box"><h3>💡 Based on your results — tools that can help:</h3><div class="aff-links"><a class="aff-link" href="https://taxfix.de" target="_blank" rel="noopener sponsored">🧾 Taxfix — File taxes online — Easy tax return</a><a class="aff-link" href="https://wundertax.de" target="_blank" rel="noopener sponsored">📊 Wundertax — German taxes — Optimized returns</a><a class="aff-link" href="https://boldin.com" target="_blank" rel="noopener sponsored">📈 Boldin — Financial planning — Retirement calc</a></div></div>
+  <div class="share-bar no-print"><button class="btn-sm btn-share" onclick="shareReddit()">🔴 Share on Reddit</button><button class="btn-sm btn-twitter" onclick="shareTwitter()">𝕏 Share on X</button><button class="btn-sm btn-pdf" onclick="exportPDF()">📄 Export PDF</button></div>
+  <div class="capture-box no-print" id="capture_section"><h3>📧 Save your result + get updates when rules change</h3><p style="font-size:.82rem;color:#4338ca;margin-bottom:10px">Get notified when SNAP/Medicaid thresholds update (they change annually).</p><form class="capture-form" onsubmit="submitEmail(event)"><input type="email" id="cap_email" placeholder="your@email.com" required/><button type="submit" class="btn-sm btn-email">Save free ↗</button></form><p id="cap_thanks" style="display:none;color:#16a34a;font-size:.85rem;margin-top:8px">✅ Saved! You'll be notified when us-benefit-cliff rules change.</p></div>
+  <div class="tunnel-bar no-print"><p>🔗 Explore more friction calculators:</p><div class="tunnel-links"><a class="tunnel-link" href="https://Legion33shadow.github.io/nebenjob-rechner-de/" target="_blank">🇩🇪 Nebenjob Rechner</a><a class="tunnel-link" href="https://Legion33shadow.github.io/csn-inkomst-kalkylator-se/" target="_blank">🇸🇪 CSN Kalkylator</a><a class="tunnel-link" href="https://Legion33shadow.github.io/real-hourly-rate/" target="_blank">🌍 Real Hourly Rate</a><a class="tunnel-link" href="https://Legion33shadow.github.io/portugal-nhr-calculator/" target="_blank">🇵🇹 Portugal NHR</a><a class="tunnel-link" href="https://Legion33shadow.github.io/huurtoeslag-calculator-nl/" target="_blank">🇳🇱 Huurtoeslag NL</a></div></div>
+</div>
+<div class="ad-slot no-print"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="3333333333" data-ad-format="rectangle" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});<\/script></div>
+<div class="meta-footer">Updated 2026 · LEGION v24 · Estimates only — consult benefits.gov for exact figures · <a href="sitemap.xml">sitemap</a></div>
+</div>
+<script>
+
+function exportPDF(){
+  document.querySelector('.share-bar').style.display='none';
+  document.querySelector('.capture-box').style.display='none';
+  window.print();
+  setTimeout(()=>{
+    document.querySelector('.share-bar').style.display='flex';
+    document.querySelector('.capture-box').style.display='block';
+  },1000);
+}
+function shareReddit(){
+  const txt = encodeURIComponent('US Welfare Cliff: I showed that earning $5k MORE would leave this family $'+Math.abs(cliffLoss)+' worse off');
+  const url = encodeURIComponent(window.location.href);
+  window.open('https://www.reddit.com/submit?title='+txt+'&url='+url,'_blank');
+}
+function shareTwitter(){
+  const txt = encodeURIComponent('US Welfare Cliff: I showed that earning $5k MORE would leave this family $'+Math.abs(cliffLoss)+' worse off'+' '+window.location.href);
+  window.open('https://twitter.com/intent/tweet?text='+txt,'_blank');
+}
+function submitEmail(e){
+  e.preventDefault();
+  const email = document.getElementById('cap_email').value;
+  if(!email) return;
+  const form  = new FormData();
+  form.append('email', email);
+  form.append('source', 'us-benefit-cliff');
+  form.append('result', cliffLoss || 'N/A');
+  fetch('https://formspree.io/f/xpwzpwzp',{
+    method:'POST', body:form,
+    headers:{'Accept':'application/json'}
+  }).then(()=>{
+    document.getElementById('cap_email').value='';
+    document.getElementById('cap_thanks').style.display='block';
+  }).catch(()=>{});
+  return false;
+}
+
+
+var cliffLoss = 0;
+function calcUS(){
+  const state   = document.getElementById('state').value;
+  const income  = parseFloat(document.getElementById('income').value)||0;
+  const children= parseInt(document.getElementById('children').value)||0;
+  const snap    = document.getElementById('snap').value==='yes';
+  const medicaid= document.getElementById('medicaid').value==='yes';
+  // SNAP : gross limit = 130% FPL, net 100% FPL
+  // FPL 2026 (approx): 15000 + 5500*n
+  const FPL    = 15000 + 5500*children;
+  const snapGrossLimit = FPL*1.30;
+  const snapBenefit = income < snapGrossLimit
+    ? Math.max(0, Math.round(FPL*0.30 - income*0.30/12)*12)
+    : 0;
+  // Medicaid : below 138% FPL in expansion states
+  const medicaidLimit  = FPL*1.38;
+  const medicaidValue  = medicaid && income < medicaidLimit ? 6000*children + 5000 : 0;
+  // EITC simplified
+  const eitcMax  = children===0?600:children===1?3900:children===2?6600:7430;
+  const eitcRate = children===0?0.07:0.34;
+  const eitcPhase= income < 15000 ? income*eitcRate
+                 : income < 25000 ? eitcMax
+                 : Math.max(0, eitcMax-(income-25000)*0.16);
+  // Federal income tax (simplified, standard deduction 14600)
+  const taxable = Math.max(0, income-14600);
+  let fedTax = taxable <= 11600 ? taxable*0.10
+             : 1160 + (taxable-11600)*0.12;
+  const FICA    = income*0.0765;
+  const totalBenefits = snapBenefit + medicaidValue + eitcPhase;
+  const totalDeductions = fedTax + FICA;
+  const realNet = income - totalDeductions + totalBenefits;
+  // Cliff scenario : +5000 income
+  const inc2   = income + 5000;
+  const snap2  = inc2 < snapGrossLimit ? Math.max(0,Math.round(FPL*0.30-inc2*0.30/12)*12) : 0;
+  const med2   = medicaid && inc2 < medicaidLimit ? medicaidValue : 0;
+  const eitc2  = inc2 < 15000 ? inc2*eitcRate
+               : inc2 < 25000 ? eitcMax
+               : Math.max(0, eitcMax-(inc2-25000)*0.16);
+  const tax2   = Math.max(0,inc2-14600);
+  let fedTax2  = tax2 <= 11600 ? tax2*0.10 : 1160+(tax2-11600)*0.12;
+  const fica2  = inc2*0.0765;
+  const realNet2 = inc2 - fedTax2 - fica2 + snap2 + med2 + eitc2;
+  cliffLoss = Math.round(realNet2 - realNet);
+  document.getElementById('res_snap').textContent    = snapBenefit>0?snapBenefit.toLocaleString()+'$/yr':'Not eligible';
+  document.getElementById('res_medicaid').textContent= medicaidValue>0?'~'+medicaidValue.toLocaleString()+'$/yr value':'Not eligible';
+  document.getElementById('res_eitc').textContent    = eitcPhase.toFixed(0)+'$';
+  document.getElementById('res_net').textContent     = realNet.toFixed(0)+'$ real net';
+  document.getElementById('res_cliff').textContent   = (cliffLoss>=0?'+':'')+cliffLoss+'$ if you earn +5000$ more';
+  const shock = document.getElementById('shock_us');
+  shock.style.display='block';
+  shock.className='shock '+(cliffLoss<0?'shock-red':cliffLoss<500?'shock-orange':'shock-green');
+  if(cliffLoss < 0){
+    shock.innerHTML = '🚨 WELFARE CLIFF DETECTED: earning $5,000 MORE would leave you <strong>$'+Math.abs(cliffLoss)+' WORSE OFF</strong> due to lost benefits';
+  } else {
+    shock.innerHTML = '✅ No cliff detected at this income level — you gain $'+cliffLoss+' net from a $5k raise';
+  }
+  document.getElementById('aff_box').style.display='block';
+  document.getElementById('capture_section').style.display='block';
+}
+
+window.onload = calcUS;
+</script>
+</body></html>
