@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://Legion33shadow.github.io/us-benefit-cliff/sitemap.xml
