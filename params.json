@@ -1,0 +1,21 @@
+{
+  "slug": "us-benefit-cliff",
+  "country": "US",
+  "domain": "social_policy",
+  "law_reference": "Federal TANF / SNAP Phase-Out Rules",
+  "sources": [
+    "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+    "https://www.fns.usda.gov/snap"
+  ],
+  "sources_health": {
+    "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines": {
+      "status": 200,
+      "reachable": true
+    },
+    "https://www.fns.usda.gov/snap": {
+      "status": 200,
+      "reachable": true
+    }
+  },
+  "signature_payload": "d3256ba2f9cc328649e38ff17db5c7c0aa32eb9367be34b8536b821f6f09e9bc"
+}
