@@ -1,0 +1,14 @@
+{
+  "slug": "us-benefit-cliff",
+  "type": "calculator",
+  "country": "US",
+  "category": "benefits",
+  "official_sources": [
+    "https://www.benefits.gov/",
+    "https://www.healthcare.gov/",
+    "https://www.fns.usda.gov/snap/recipient/eligibility"
+  ],
+  "claim_state": "method_unverified",
+  "phoenix_ready": false,
+  "limitations": "SNAP/Medicaid/tax credits vary by state and household. Verify with official sources."
+}
